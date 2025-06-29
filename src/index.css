@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.product-card .utilyBtn {
+  display: none;
+}
+.product-card:hover  .utilyBtn {
+  display: flex;
+}
