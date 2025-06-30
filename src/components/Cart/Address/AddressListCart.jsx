@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AddressListCart = ({element , index , checkedAddress ,  setCheckedAddress}) => {
+const AddressListCart = ({element , index , checkedAddress ,  setCheckedAddress , handleRemoveAddress}) => {
 
   return (
     <div key={index} className="address-card bg-white shadow flex items-start gap-2 rounded px-4 py-5 mb-5">
@@ -8,7 +8,7 @@ const AddressListCart = ({element , index , checkedAddress ,  setCheckedAddress}
       type="radio"
       name="SelectDeliveryAddresses"
       className="mt-2"
-      onChange={() => setCheckedAddress(index)}
+      onChange={() => setCheckedAddress(index) }
       defaultChecked={index === 0}
     />
     <div>

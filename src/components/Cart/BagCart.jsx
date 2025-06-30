@@ -6,17 +6,13 @@ import EmptyCart from '../Cart/EmptyCart';
 
 
 function BagCart() {
-  const {addToCart} = useSelector(state => state.addCart);
+    const {addToCart} = useSelector(state => state.addCart);
   const { products } = useSelector((state) => state.productDatas);
   let items = products.filter((item) => addToCart.includes(item.id))
 
-
-  console.log(addToCart);
-  
-  // return(
-  //   <Outlet></Outlet>
-  // )
-  
+if (addToCart.length === 0) {
+  return <EmptyCart></EmptyCart>
+}
 
 
 if (items.length > 0 ) {
@@ -28,11 +24,6 @@ if (items.length > 0 ) {
   <Paymentsummary></Paymentsummary>
 </div>
   )
-}else{
-  return(
-<EmptyCart></EmptyCart>
-  
-)
 }
 }
 

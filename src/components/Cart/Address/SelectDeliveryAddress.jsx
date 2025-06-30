@@ -5,32 +5,42 @@ import Filladdress from './Filladdress';
 import Paymentsummary from '../Paymentsummary';
 import { faTruckMedical } from '@fortawesome/free-solid-svg-icons';
 import AddressListCart from './AddressListCart';
+import { addAddress ,removeAddress } from '../../../store/Reducers/AddressLists';
 
-const SelectDeliveryAddress = ({onAddAddress, handleRemoveAddress}) => {
+const SelectDeliveryAddress = () => {
   const dispatch = useDispatch();
-
- const [checkedAddress, setCheckedAddress] = useState(null);
+  const {addressList} = useSelector(state => state.addressListSlice);
+ const [checkedAddress, setCheckedAddress] = useState(addressList.length > 0 ?  0 : null)
  const [newAddress, setNewAddress] = useState({ fullName: '', addressLine1: '', addressLine2: '', city: '', state: '', postalCode: '', phoneNumber: '', addressType: '' });
  const [showForm, setShowForm] = useState(false);
- 
+
+ console.log("addressList", );
 
 useEffect(() => {
   localStorage.setItem('checkedAddress', JSON.stringify(checkedAddress));
 }, [checkedAddress]);
 
+  const onAddAddress = (newAddress) => {
+dispatch(addAddress(newAddress));
+  };
 
-  const {addressList} = useSelector(state => state.addressListSlice);
+  const handleRemoveAddress = (address) => {
+    dispatch(removeAddress(address));
+  };
 
   return (
   
     <div className="container w-full mx-auto p-4 SelectDeliveryAddress">
 <div className='flex items-center justify-between' >
-      <h1 className="text-2xl font-bold mb-4">Select Delivery Address</h1>
+      <h1 className="text-2xl font-bold mb-4">
+        {/* {addressList ? "Select Delivery Address" : "Add Delivery Address"} */}
+{addressList.length === 0 ?  "Add Delivery Address" : "Select Delivery Address"}
+        </h1>
       <button onClick={() => setShowForm(!showForm)} className='border py-1 px-2 mb-2 capitalize float-end'>Add new address</button>
       </div>
 
       {showForm && (
-        <div className="address-form absolute top-0 left-0 w-full h-screen overflow-hidden  bg-[#00000077] backdrop-blur-0 shadow p-4 mb-5">
+        <div className="address-form absolute top-0 left-0 w-full h-screen flex items-center justify-center  overflow-hidden  bg-[#00000077]   backdrop-blur-10 shadow p-4 ">
         <Filladdress onAddAddress={onAddAddress} setShowForm={setShowForm} ></Filladdress>
        </div>
       )}
@@ -47,6 +57,7 @@ if(index === 0) {
       checkedAddress={checkedAddress} 
       index={index} 
       setCheckedAddress={setCheckedAddress} 
+      handleRemoveAddress={handleRemoveAddress}
     />
     </>
   )
@@ -60,6 +71,7 @@ if(index === 0) {
         checkedAddress={checkedAddress} 
         index={index} 
         setCheckedAddress={setCheckedAddress} 
+        handleRemoveAddress={handleRemoveAddress}
       />
       </>
   )

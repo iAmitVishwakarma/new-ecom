@@ -1,18 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit'
 import productSlice  from './Reducers/ProReducer'
 import  wishlistSlice  from './Action/Wishlists'
-import  addToCartSlice  from './Action/AddCart'
+import  addToCartSlice, { clearCart }  from './Action/AddCart'
 import  addressListSlice  from './Reducers/AddressLists'
-
-
-
+import orderSlice from './Reducers/OrderSlice'
+import authSlice from './Reducers/AuthSlice'
 
 export const store = configureStore({
   reducer: {
     productDatas: productSlice,
     wishlist: wishlistSlice,
-     addCart :  addToCartSlice,
-     addressListSlice : addressListSlice,
+    addCart :  addToCartSlice,
+    addressListSlice : addressListSlice,
+    orders: orderSlice,
+    auth: authSlice,
   },
- 
-})
+});
+
+export { clearCart };

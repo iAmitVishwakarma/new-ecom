@@ -2,11 +2,15 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeaddToCart, setaddToCart } from '../store/Action/AddCart';
 import { addToWishlist , removeFromWishlist } from '../store/Action/Wishlists';
+import { useLocation } from 'react-router-dom';
 
 
 
 const UtilityButtons =({ product }) =>{
+  
   const dispatch = useDispatch();
+const location = useLocation();
+
   const {wishlist} = useSelector(state => state.wishlist);
   const {addToCart} = useSelector(state => state.addCart);
 

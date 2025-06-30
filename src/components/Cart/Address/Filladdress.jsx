@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 
 const Filladdress = ({ onAddAddress , setShowForm }) => {
@@ -40,8 +41,12 @@ const Filladdress = ({ onAddAddress , setShowForm }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 border border-gray-300 rounded">
-      <form onSubmit={handleSubmit} className="flex flex-col justify-center items-start">
+    <div className="max-w-md flex items-center mx-auto p-4 border   backdrop-blur-lg shadow-sm bg-white/10 border-gray-300 border-dashed rounded-lg relative">
+     
+       <i onClick={()=>setShowForm(false) } class="ri-close-large-line absolute -top-2 -right-2 text-black bg-white rounded-full px-1 font-bold"></i>
+      
+      
+      <form onSubmit={handleSubmit} className="flex  flex-col justify-center items-start">
         <div className="addressDetail">
         <label htmlFor='CONTACT DETAILS' className="block mb-2">CONTACT DETAILS:</label>
           <input
@@ -143,6 +148,7 @@ const Filladdress = ({ onAddAddress , setShowForm }) => {
           <button id="submit" type="submit" className="w-full text-lg font-bold text-white bg-pink-500 rounded py-2 px-4">Save Address</button>
         </div>
       </form>
+      
     </div>
   );
 };

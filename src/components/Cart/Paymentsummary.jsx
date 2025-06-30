@@ -10,30 +10,63 @@ const Paymentsummary = () => {
     const {addressList} = useSelector(state => state.addressListSlice);
 
 // console.log(addressList === null);
-
+ const [couponCode, setCouponCode] = useState('');
+  const [couponDiscount, setCouponDiscount] = useState(0);
 
     let totalMRP = 0;
     let totalDiscount = 0;
     const totalItem = addToCart.length;
     const convenienceFee = 99;
-    let couponPrice = 0;
+   
     let items = products.filter((item) => addToCart.includes(item.id))
     totalMRP = items.reduce((acc, item) => acc + parseFloat(item.originalPrice), 0)
     totalDiscount = items.reduce((acc, item) => acc + parseFloat(item.discountPrice), 0);
-    const finalPayment  =  totalMRP - totalDiscount + convenienceFee - couponPrice;
+    const finalPayment  =  totalMRP - totalDiscount + convenienceFee - couponDiscount;
     
+
+    const handleApplyCoupon = (e) => {
+      if (e.target.classList.contains('CouponCode')){
+          setCouponCode(e.target.innerText)
+        }
+          if (e.target.classList.contains('apply')) { 
+      if (couponCode === 'SALE50') {
+      setCouponDiscount(50);
+    } else {
+      alert('Invalid coupon code');
+    }
+  }
+  };
+
 
   return (
     <div className="w-1/3 pl-4">
-  <div className="Coupons">
-      <h1 className="text-lg font-bold">COUPONS</h1>
-      <div className="cuponsDetails flex justify-between">
-        <p className="cuponsText font-bold text-sm mx-4">Apply Coupons</p>
-        <p className="button-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-          APPLY
-        </p>
-      </div>
-    </div>
+    <div className="Coupons">
+        <h1 className="text-lg font-bold">COUPONS</h1>
+        <div className="cuponsDetails flex justify-between items-center">
+          <input
+            type="text"
+            value={couponCode}
+            onChange={(e) => setCouponCode(e.target.value)}
+            placeholder="Enter coupon code"
+            className="cuponsText font-bold text-sm mx-4 p-2 border rounded"
+          />
+          <button
+            onClick={handleApplyCoupon}
+            className="apply button-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+          >
+            APPLY
+          </button>
+        </div>
+<div className=' grid grid-flow-col-dense items-start justify-between gap-2 mt-2'>
+  <p className='CouponCode border-dashed border-2 px-1 text-[#EC4899] font-bold ' onClick={handleApplyCoupon}>SALE50</p>
+<p className='text-sm font-thin capitalize'>save 300
+Rs- 300 off on minimum purchase of Rs. 1299.
+Expires on: 30th November 2025 11:59 PM</p>
+
+</div>
+
+
+        </div>
     <br />
     <hr />
     <br />
@@ -50,9 +83,9 @@ const Paymentsummary = () => {
       <span className="price-item-tag text-sm">Convenience Fee</span>
       <span className="price-item-value text-sm">₹${convenienceFee}</span>
     </div>
-    <div className="price-item mb-2" id="Coupon" style={{display : couponPrice > 0 ? 'block' : 'none'}} >
+    <div className="price-item mb-2" id="Coupon" style={{display : couponDiscount > 0 ? 'block' : 'none'}} >
       <span className="price-item-tag text-sm">Coupon</span>
-      <span className="price-item-value text-sm text-green-600">-₹${couponPrice.toFixed(2)}</span>
+      <span className="price-item-value text-sm text-green-600">-₹${couponDiscount.toFixed(2)}</span>
     </div>
     <hr />
     <div className="price-footer pt-4 border-t border-gray-300">

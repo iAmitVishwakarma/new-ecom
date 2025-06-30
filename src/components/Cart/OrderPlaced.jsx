@@ -1,13 +1,18 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 
 const OrderPlaced = ({randomNum, PaymentMode}) => {
+
+const navigate =  useNavigate();  
+
+
   const {addressList} = useSelector(state => state.addressListSlice);
 const checkedAddress = JSON.parse(localStorage.getItem('checkedAddress'))
 
-const getAddress = addressList.filter((elem , index)  => index === checkedAddress)
-
-// console.log(getAddress);
+    const getAddress = addressList.filter((elem , index)  => index === checkedAddress)
+  
   return (
    <div className='w-full h-screen absolute left-0 top-0 bg-[#0000006c]  flex items-center  justify-center'>
 
@@ -45,8 +50,15 @@ const getAddress = addressList.filter((elem , index)  => index === checkedAddres
       </dl>
     </div>
     <div className="flex items-center space-x-4">
-      <a href="#" className="text-white bg-green-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">Track your order</a>
-      <a href="#" className="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Return to shopping</a>
+      <button className="text-white bg-green-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
+  onClick={() => navigate('/profile/orders')}>
+        View Order Details
+    </button>
+      <button className="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+  onClick={() => navigate('/')}
+      >
+        
+        Return to shopping</button>
     </div>
   </div>
 </section>

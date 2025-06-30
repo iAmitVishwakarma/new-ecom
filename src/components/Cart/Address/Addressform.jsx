@@ -4,7 +4,7 @@ import SelectDeliveryAddress from './SelectDeliveryAddress';
 import { useDispatch, useSelector } from 'react-redux';
 import { addAddress ,removeAddress } from '../../../store/Reducers/AddressLists';
 
-const AddressForm = ({setCheckedAddress }) => {
+const AddressForm = () => {
   const dispatch = useDispatch();
   const {addressList} = useSelector(state => state.addressListSlice);
 
@@ -17,19 +17,18 @@ const AddressForm = ({setCheckedAddress }) => {
 
   
   const handleAddAddress = (newAddress) => {
-dispatch(addAddress(newAddress));
-  };
+    dispatch(addAddress(newAddress));
+  }
 
-  const handleRemoveAddress = (address) => {
-    dispatch(removeAddress(address));
-  };
+
   
   return (
     <div>
       {addressList.length > 0 ? (
-        <SelectDeliveryAddress onAddAddress={handleAddAddress}   handleRemoveAddress={handleRemoveAddress} />
+        <SelectDeliveryAddress  />
       ) : (
-        <Filladdress onAddAddress={handleAddAddress} />
+        <Filladdress onAddAddress={handleAddAddress} /> 
+      
       )}
     </div>
   );

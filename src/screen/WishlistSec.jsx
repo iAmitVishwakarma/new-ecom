@@ -7,11 +7,11 @@ function WishlistSec() {
   const { wishlist } = useSelector((state) => state.wishlist);
 
 if (wishlist == false) {
-  return <h1 className=' uppercase text-center pt-3 font-bold w-full'> no product add in wishlist </h1>
+  return <h1 className=' uppercase text-center p-8 font-bold w-full'> no product add in wishlist </h1>
 } 
   
 
-  if (products && products.length > 0) {
+ const wishlistProduct = ()=> {if (products && products.length > 0) {
     if (wishlist && wishlist.length > 0) {
       return products
         .filter((product) => wishlist.includes(product.id))
@@ -43,7 +43,17 @@ if (wishlist == false) {
           </div>
         ));
     }
-  }
+
+  }}
+
+  return (
+    <div className="wishlist-container w-10/12 mx-auto mt-8 mb-1 bg-white p-4 rounded shadow-md">
+      <h1 className="text-2xl font-bold mb-4">Wishlist</h1>
+      <div className="product-list flex flex-wrap">
+        {wishlistProduct()}
+      </div>
+    </div>
+  );
 }
     
 

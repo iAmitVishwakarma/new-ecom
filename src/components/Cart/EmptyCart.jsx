@@ -12,7 +12,10 @@ const EmptyCart = () => {
     There is nothing in your bag. Let's add some items.
   </div>
   
-    <button onClick={()=>  navigate('/')}  className="text-center inline-block mt-5 mb-10 px-4 py-2 text-lg text-pink-500 border-2 border-pink-500 rounded-md font-semibold hover:bg-pink-500 hover:text-white" onclick="FROMWISHLIST()">
+    <button  
+    className="text-center inline-block mt-5 mb-10 px-4 py-2 text-lg text-pink-500 border-2 border-pink-500 rounded-md font-semibold hover:bg-pink-500 hover:text-white"
+    onClick={() => navigate('/wishlist')}
+    >
       ADD ITEMS FROM WISHLIST
     </button>
  
