@@ -32,7 +32,7 @@ if (products && products.length > 0) {
       </p>
     </Link >
     <Link to={`/products/${products[randomNum].title}`} className="w-1/2 Poster-detail">
-      <img src={products[randomNum].image} alt={products[randomNum].title} className="w-56 float-right m-2 object-contain h-60vh" />
+      <img src={products[randomNum].image} alt={`Image of ${products[randomNum].title}`} className="w-56 float-right m-2 object-contain h-60vh" />
     </Link >
   </div >
 </div>

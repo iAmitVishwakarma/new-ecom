@@ -5,6 +5,7 @@ import  addToCartSlice, { clearCart }  from './Action/AddCart'
 import  addressListSlice  from './Reducers/AddressLists'
 import orderSlice from './Reducers/OrderSlice'
 import authSlice from './Reducers/AuthSlice'
+import searchSlice from './Reducers/SearchSlice'
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     addressListSlice : addressListSlice,
     orders: orderSlice,
     auth: authSlice,
+    search: searchSlice,
   },
 });
 

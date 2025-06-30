@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { asyncgetProduct } from '../store/Action/getProduct';
 import UtilityButtons from '../components/UtilityButtons';
+import { Helmet } from 'react-helmet-async';
 
 const ProductPage = () => {
   const { name } = useParams();
@@ -56,6 +57,13 @@ const ProductPage = () => {
   }
 
   return (
+    <>
+  <Helmet >
+        <title>{`${product.title} - New E-com`}</title>
+        <meta name="description" content={product.description.substring(0, 160)} />
+      </Helmet>
+
+
     <div className="flex justify-center h-[80vh] w-3/4 mx-auto bg-white mt-8 relative border border-gray-300 shadow-md">
       <div className="absolute left-0 p-4">
         <button
@@ -68,7 +76,7 @@ const ProductPage = () => {
       <div className="w-2/5 ">
         <img
           src={product.image}
-          alt={product.title}
+          alt={`Image of ${product.title}`}
           className="w-full h-[100%] object-contain p-4 float-left -mx-20"
         />
       </div>
@@ -98,6 +106,7 @@ const ProductPage = () => {
         <UtilityButtons product={product.id} />
       </div>
     </div>
+    </>
   );
 };
 

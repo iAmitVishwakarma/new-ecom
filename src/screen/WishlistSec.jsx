@@ -23,7 +23,7 @@ if (wishlist == false) {
             <div onClick={() => clickHandler(product)}>
               <img
                 src={product.image}
-                alt={product.title}
+                alt={`Image of ${product.title}`}
                 className="product-image w-44 h-40 object-contain mx-auto"
               />
               <br />

@@ -22,7 +22,11 @@ function BagPage({items  }) {
     <div  key={item.id} >
     <div key={item.id} className="bag-item-container mb-4 p-4 relative bg-white border border-gray-300 rounded shadow-md">
       <div  className="item-left-part absolute h-36 w-36">
-        <img className="w-full h-full object-contain object-center" src={item.image} />
+        <img 
+        className="w-full h-full object-contain object-center" 
+        src={item.image}  
+        alt={`Image of ${item.title}`}
+        />
       </div>
       <div className="item-right-part pl-12 relative min-h-36 ml-36 mb-4">
         <div className="item-name text-sm">{item.title}</div>

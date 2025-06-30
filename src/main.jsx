@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import {store} from './store/Store.jsx'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-
+import { HelmetProvider } from 'react-helmet-async'; // Import HelmetProvider
 
 library.add(fas);
 
@@ -17,8 +17,10 @@ library.add(fas);
 
 createRoot(document.getElementById('root')).render(
 <Provider store={store} >
-    <BrowserRouter>
-       <App />
-    </BrowserRouter>
+   <BrowserRouter>
+        <HelmetProvider> {/* Wrap your app */}
+          <App />
+        </HelmetProvider>
+      </BrowserRouter>
  </Provider>,
 )
