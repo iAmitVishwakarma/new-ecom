@@ -20,7 +20,7 @@ function BagPage({items  }) {
      
       return(
     <div  key={item.id} >
-    <div key={item.id} className="bag-item-container mb-4 p-4 relative bg-white border border-gray-300 rounded shadow-md">
+    <div key={item.id} className="bag-item-container mb-4 p-4 relative bg-white dark:bg-gray-500 border border-gray-300 rounded shadow-md">
       <div  className="item-left-part absolute h-36 w-36">
         <img 
         className="w-full h-full object-contain object-center" 

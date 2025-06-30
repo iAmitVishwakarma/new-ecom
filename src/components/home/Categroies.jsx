@@ -7,7 +7,7 @@ const Categroies = () => {
 
 
 
-  return ( <div className=' flex justify-evenly bg-[#ff8f2c]/50 
+  return ( <div className=' md:flex justify-evenly bg-[#ff8f2c]/50 hidden  
   '>
     <h1 className=' uppercase text-2xl text-[#eb018b] font-bold p-2  drop-shadow-2xl' >ALL product</h1>
     {categories.map((product , index) =>(

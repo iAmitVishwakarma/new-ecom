@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .product-card .utilyBtn {
   display: none;
 }

@@ -22,7 +22,7 @@ const Product = ({ product }) => {
         />
         <br />
         <hr />
-        <h2 className="product-title text-1xl font-semibold">
+        <h2 className="product-title text-1xl font-semibold text-black">
           {product.title.split(" ").length <= 7 ?( product.title.split(" ").slice(0, 7).join(" ") ) : (product.title.split(" ").slice(0, 7).join(" ") + " ..." )
           }
         </h2>

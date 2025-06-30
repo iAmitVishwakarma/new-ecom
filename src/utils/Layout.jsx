@@ -5,10 +5,14 @@ import {
   faShoppingBag,
   faUser,
   faSearch,
+ 
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, Route, Routes, useLocation } from "react-router-dom";
+import { Link, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import { FaBars ,FaTimes , FaRegHeart } from "react-icons/fa";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { BsBag } from "react-icons/bs";
+import { IoIosSearch } from "react-icons/io";
 // Assets & Components
 import Logo from "../../src/assets/logo.webp";
 import Footer from "../components/Footer";
@@ -27,95 +31,168 @@ const WishlistSec = React.lazy(() => import("../screen/WishlistSec"));
 const Cart = React.lazy(() => import("../screen/Cart"));
 const Profile = React.lazy(() => import("../screen/Profile"));
 
+
+
+import { toggleTheme } from "../store/Reducers/ThemeSlice";
+import { logout } from "../store/Reducers/AuthSlice";
+
+
+
+
 const Layout = () => {
-  const dispatch = useDispatch();
-  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { wishlist } = useSelector((state) => state.wishlist);
   const { addToCart } = useSelector((state) => state.addCart);
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { searchTerm } = useSelector((state) => state.search);
 
-  const handleSearchChange = (e) => {
-    dispatch(setSearchTerm(e.target.value));
+  const { theme } = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+    const location = useLocation();
+
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch(asyncgetProduct(searchTerm));
   };
 
-  const HeaderHtml = ()=>{
-    return(
-  <header className="header flex justify-between items-center px-10 py-4 shadow-lg sticky top-0 bg-white z-50">
-        <div className="w-10/12 mx-auto flex justify-between items-center">
-          <div className="logo">
-            <Link to="/">
-              <img className="h-12" src={Logo} alt="logo" />
-            </Link>
-          </div>
-
-          {isAuthenticated ? (
-            <>
-              {!location.pathname.includes("/cart") && (
-                <div className="search-bar flex items-center bg-gray-100 rounded-md px-4 py-2 w-1/3">
-                  <FontAwesomeIcon icon={faSearch} className="text-gray-500" />
-                  <input
-                    type="text"
-                    placeholder="Search for products, brands and more"
-                    className="bg-transparent outline-none ml-2 w-full"
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                  />
-                </div>
-              )}
-
-              <div className="nav-icons flex items-center space-x-8">
-                <Link to="/profile" className="decoration-none">
-                  <div className="profile-icon relative flex flex-col items-center">
-                    <FontAwesomeIcon icon={faUser} />
-                    <p className="text-sm font-bold">Profile</p>
-                  </div>
-                </Link>
-
-                <Link to="/wishlist" className="decoration-none">
-                  <div className="wishlist-icon relative flex flex-col items-center">
-                    <FontAwesomeIcon icon={faHeart} />
-                    {wishlist.length > 0 && (
-                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                        {wishlist.length}
-                      </span>
-                    )}
-                    <p className="text-sm font-bold">Wishlist</p>
-                  </div>
-                </Link>
-
-                <Link to="/cart" className="decoration-none">
-                  <div className="bag-icon relative flex flex-col items-center">
-                    <FontAwesomeIcon icon={faShoppingBag} />
-                    {addToCart.length > 0 && (
-                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                        {addToCart.length}
-                      </span>
-                    )}
-                    <p className="text-sm font-bold">Bag</p>
-                  </div>
-                </Link>
-              </div>
-            </>
-          ) : (
-            <Link
-              to={localStorage.getItem("isAuthenticated") ? "/login" : "/signup"}
-              className="block px-4 py-2 text-md bg-pink-500 hover:text-pink-900 text-gray-100  font-semibold rounded-lg transition-colors duration-100 ease-in-out hover:bg-amber-500/50 capitalize"
-            >
-              {localStorage.getItem("isAuthenticated") ? "login" : "signup"}
-              {localStorage.getItem("isAuthenticated") ? "login" : "signup"}
-            </Link>
-          )}
-        </div>
-      </header>
-    )}
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <div className="flex flex-col min-h-screen">
-    <HeaderHtml />
+    <>
+      <header className="shadow-md py-4 px-4 sm:px-10 bg-white dark:bg-gray-800 font-[sans-serif] min-h-[70px] relative">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+     
+          <Link to="/" className="text-pink-500 text-2xl font-bold">
+           <img src={Logo} alt="e-com logo" className="h-12"/>
+          </Link>
 
-      <main className="flex-grow">
+          <div className="flex items-center gap-4 lg:hidden">
+            {/* Hamburger Menu */}
+            <button onClick={toggleMenu} className=" transition-all duration-200 ease-in-out" >
+              {isMenuOpen ? (
+                <FaTimes className="text-2xl" />
+              ) : (
+                <FaBars className="text-2xl" />
+              )}
+            </button>
+          </div>
+    
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden mt-4 absolute z-10 top-16 right-0 transition-all duration-100 ease-out bg-purple-50 dark:bg-gray-600 w-xl p-5  shadow-xl">
+            <nav className="flex flex-col gap-4 justify-center items-center px-5">
+              
+            <button onClick={() => dispatch(toggleTheme())}>
+              {theme === "light" ? (
+                <MdOutlineDarkMode className="text-3xl" />
+              ) : (
+                <MdOutlineLightMode className="text-3xl" />
+              )}
+          
+            </button>
+            <h1 className=" capitalize font-semibold -mt-3 mb-2">theme</h1>
+            <Link to="/wishlist" className="relative">
+              <FaRegHeart className="text-3xl" />
+              {wishlist.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {wishlist.length}
+                </span>
+              )}
+              
+            </Link>
+            <h1 className=" capitalize font-semibold -mt-3 mb-2">wishlists</h1>
+            <Link to="/cart" className="relative">
+              <BsBag className="text-3xl" />
+              {addToCart.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {addToCart.length}
+                </span>
+              )}
+            </Link>
+            <h1 className=" capitalize font-semibold -mt-3 mb-2">Cart</h1>
+            <Link
+              to={isAuthenticated ? "/profile" : "/login"}
+              className="block px-4 py-2 text-lg bg-pink-500 hover:text-pink-900 text-gray-100 font-semibold rounded-lg transition-colors duration-100 ease-in-out hover:bg-amber-500/50 capitalize"
+            >
+              {isAuthenticated ? "Profile" : "Login"}
+            </Link>
+         
+            </nav>
+          </div>
+        )}
+
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex lg:w-10/12  lg:items-center lg:justify-end lg:mt-0">
+ {location.pathname.includes("/cart") || location.pathname.includes("/wishlist") || location.pathname.includes("/products") || isAuthenticated && (
+          <form
+            onSubmit={handleSearch}
+            className="w-full lg:w-1/2 mx-auto mt-4 lg:mt-0"
+          >
+            <div className="relative">
+              <input
+                onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+                value={searchTerm}
+                type="text"
+                placeholder="Search for products, brands and more"
+                className="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none dark:bg-gray-700 dark:border-gray-600"
+              />
+              <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
+                <IoIosSearch />
+              </button>
+            </div>
+          </form>
+ )}
+
+          <div className="flex items-center  gap-7 ml-4">
+           
+            <button onClick={() => dispatch(toggleTheme())} className="flex flex-col items-center text-xs justify-center">
+              {theme === "light" ? (
+                <MdOutlineDarkMode className="text-2xl" />
+              ) : (
+                <MdOutlineLightMode className="text-2xl" />
+              )}
+                <h1 className=" capitalize font-semibold mt-1">theme</h1>
+            </button>
+           
+            {isAuthenticated &&(<>
+            <Link to="/wishlist" className="relative flex flex-col items-center text-xs justify-center">
+              <FaRegHeart className="text-2xl" />
+              {wishlist.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {wishlist.length}
+                </span>
+              )}
+                <h1 className=" capitalize font-semibold mt-1 ">wishlists</h1>
+            </Link>
+            <Link to="/cart" className="relative flex flex-col items-center text-xs justify-center">
+              <BsBag className="text-2xl" />
+              {addToCart.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {addToCart.length}
+                </span>
+              )}
+                <h1 className=" capitalize font-semibold mt-1">cart</h1>
+            </Link>
+            </>
+            )}
+            <Link
+              to={isAuthenticated ? "/profile" : "/login"}
+              className="block px-4 py-2 text-md bg-pink-500 hover:text-pink-900 text-gray-100 font-semibold rounded-lg transition-colors duration-100 ease-in-out hover:bg-amber-500/50 capitalize"
+            >
+              {isAuthenticated ? "Profile" : "Login"}
+            </Link>
+          </div>
+        </div>
+            </div>
+      </header>
+
+       <main className="flex-grow">
         <Suspense fallback={<div className="text-center p-10">Loading page...</div>}>
           <Routes>
             <Route path="/login" element={<Login />} />
@@ -140,9 +217,8 @@ const Layout = () => {
           </Routes>
         </Suspense>
       </main>
-
       <Footer />
-    </div>
+    </>
   );
 };
 

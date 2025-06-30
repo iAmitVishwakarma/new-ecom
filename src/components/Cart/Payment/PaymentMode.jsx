@@ -36,11 +36,11 @@ const PaymentMode = () => {
   <h2 className="text-xl font-semibold mb-4">
     Choose Payment Mode
   </h2>
-  <div className="flex w-full mx-auto bg-white  rounded-lg shadow-md">
-  <div className="w-2/5 border-r bg-gray-300">
+  <div className="flex w-full mx-auto bg-white dark:bg-gray-800  rounded-lg shadow-md">
+  <div className="w-2/5 border-r bg-gray-300 dark:bg-gray-800">
     <SelectPaymentModes handlePaymentModeChange={handlePaymentModeChange}  selectedPaymentMode={selectedPaymentMode} />
   </div>
-  <div className="w-3/6  mx-auto">
+  <div className="w-3/6  mx-auto ">
 
  {selectedPaymentMode ? (
   <>

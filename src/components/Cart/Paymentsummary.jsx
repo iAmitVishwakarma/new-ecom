@@ -48,7 +48,7 @@ const Paymentsummary = () => {
             value={couponCode}
             onChange={(e) => setCouponCode(e.target.value)}
             placeholder="Enter coupon code"
-            className="cuponsText font-bold text-sm mx-4 p-2 border rounded"
+            className="cuponsText font-bold text-sm dark:text-gray-800 mx-4 p-2 border rounded"
           />
           <button
             onClick={handleApplyCoupon}

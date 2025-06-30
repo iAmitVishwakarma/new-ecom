@@ -12,7 +12,7 @@ function PaymentCart() {
   const navigate =  useNavigate();  
 
  if (addToCart.length === 0) {
-  returnnavigate("/cart")
+  return navigate("/cart")
 }
 
 
@@ -21,7 +21,7 @@ if(addressList.length ===  0){
   return navigate("/cart/address")
 }
  return (
-  <div className="flex w-3/4 mx-auto mt-8 mb-1 bg-white p-4 rounded shadow-md">
+  <div className="flex w-3/4 mx-auto mt-8 mb-1 bg-white dark:bg-gray-800 p-4 rounded shadow-md">
   <div className="w-2/3 pr-4 border-r border-gray-300">
   <PaymentMode></PaymentMode>
     </div>

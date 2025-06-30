@@ -22,19 +22,45 @@ const {products} = useSelector((state)=> state.productDatas)
 
 
 if (products && products.length > 0) { 
- return <div className="w-[85%] px-4 hero m-auto border-e border-red-100 rounded" onClick={() => Product(products[randomNum].id)}>
-  <div to={`/products/${products[randomNum].title}`} style={{ backgroundImage: `linear-gradient(60deg, #FD913C 45%, white 65%)` }} className="w-full h-96 flex justify-center items-center poster">
-    <Link to={`/products/${products[randomNum].title}`} className="w-4/12   mt-[-15px] ml-[-7px] text-detail">
-      <h4 className="uppercase font-bold text-xs ">{products[randomNum].category}</h4>
-      <h1 className="text-2xl font-bold text-slate-50">{products[randomNum].title.split(" ").slice(0, 6).join(" ")}  <span className="text-base">{products[randomNum].title.split(" ").slice(6).join(" ")}</span>  </h1>
-      <p className="capitalize overflow-hidden m-auto mt-1 font-normal">
-        <i className=" text-sm">{products[randomNum].description.split(" ").slice(0, 30).join(" ")}</i>
+ return <div
+  className="w-[95%]  hidden md:block px-2 sm:px-4 hero m-auto border-e border-red-100 dark:border-red-300 rounded"
+  onClick={() => Product(products[randomNum].id)}
+>
+  <div
+    style={{ backgroundImage: `linear-gradient(60deg, #FD913C 45%, white 65%)` }}
+    className="w-full h-60 sm:h-72 md:h-96 flex flex-col md:flex-row justify-center items-center poster rounded-md overflow-hidden"
+  >
+    <Link
+      to={`/products/${products[randomNum].title}`}
+      className="w-full md:w-5/12 mt-2 sm:mt-4 px-3 text-detail text-center md:text-left"
+    >
+      <h4 className="uppercase font-bold text-xs text-gray-700 dark:text-gray-300">
+        {products[randomNum].category}
+      </h4>
+      <h1 className="text-xl sm:text-2xl font-bold text-slate-50 dark:text-slate-200">
+        {products[randomNum].title.split(" ").slice(0, 6).join(" ")}{" "}
+        <span className="text-base">
+          {products[randomNum].title.split(" ").slice(6).join(" ")}
+        </span>
+      </h1>
+      <p className="capitalize overflow-hidden mt-1 font-normal text-gray-800 dark:text-gray-200 text-sm sm:text-base">
+        <i>
+          {products[randomNum].description.split(" ").slice(0, 30).join(" ")}
+        </i>
       </p>
-    </Link >
-    <Link to={`/products/${products[randomNum].title}`} className="w-1/2 Poster-detail">
-      <img src={products[randomNum].image} alt={`Image of ${products[randomNum].title}`} className="w-56 float-right m-2 object-contain h-60vh" />
-    </Link >
-  </div >
+    </Link>
+
+    <Link
+      to={`/products/${products[randomNum].title}`}
+      className="w-full md:w-1/2 flex justify-center md:justify-end Poster-detail"
+    >
+      <img
+        src={products[randomNum].image}
+        alt={`Image of ${products[randomNum].title}`}
+        className="w-32 sm:w-40 md:w-56 h-40 sm:h-52 md:h-[60vh] object-contain m-2"
+      />
+    </Link>
+  </div>
 </div>
 }
 

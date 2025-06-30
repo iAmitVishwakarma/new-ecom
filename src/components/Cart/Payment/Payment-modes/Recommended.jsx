@@ -23,7 +23,7 @@ const Recommended = () => {
                <input  className="form-radio text-pink-500 " name="payment" type="radio"  value="CashonDelivery" onChange={handlePaymentChange} />
                  <span className="ml-2">   Cash on Delivery (Cash/UPI)  </span>
                   </div>
-                   <FontAwesomeIcon icon="money-bill-wave"  className="text-gray-700 mr-2 text-xl" />
+                   <FontAwesomeIcon icon="money-bill-wave"  className=" mr-2 text-xl" />
         </div> 
         <div>
            {selectedPayment === "CashonDelivery" && <div className='my-1 mt-4'> <Cashondelivery PaymentMode={selectedPayment} /> </div>}
@@ -36,7 +36,7 @@ const Recommended = () => {
              <input className="form-radio text-pink-500" name="payment" type="radio"  value="phonepe"  onChange={handlePaymentChange}/>
              <span className="ml-2"> PhonePe </span>
              </div>
-             <FontAwesomeIcon icon="mobile-alt" className="text-gray-700 mr-2" />
+             <FontAwesomeIcon icon="mobile-alt" className=" mr-2" />
          </div>
       <div>
        {selectedPayment  === "phonepe" && <div className='mt-4'><button className="w-full bg-pink-500 text-white py-2 rounded mb-4 uppercase">

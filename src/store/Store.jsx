@@ -6,6 +6,7 @@ import  addressListSlice  from './Reducers/AddressLists'
 import orderSlice from './Reducers/OrderSlice'
 import authSlice from './Reducers/AuthSlice'
 import searchSlice from './Reducers/SearchSlice'
+import ThemeSlice from './Reducers/ThemeSlice'
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     orders: orderSlice,
     auth: authSlice,
     search: searchSlice,
+     theme: ThemeSlice,
   },
 });
 

@@ -118,7 +118,7 @@ const  totalMRP = items.reduce((acc, item) => acc + parseFloat(item.originalPric
           </div>
           <input
             ref={captchInputfiled}
-            className="captchInputfiled w-11/12 border text-sm pl-2 py-2 rounded mb-1"
+            className="captchInputfiled w-11/12 border dark:text-gray-800 text-sm pl-2 py-2 rounded mb-1"
             placeholder="Enter code shown in above image•"
             type="number"
             maxLength="4"

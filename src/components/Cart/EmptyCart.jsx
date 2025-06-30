@@ -5,7 +5,7 @@ const EmptyCart = () => {
     const navigate = useNavigate();
 
   return (
-    <div className="container flex justify-center items-center flex-col  mx-auto">
+    <div className="container flex justify-center items-center flex-col  mx-auto w-2/3 aspect-video ">
   <img src="https://constant.myntassets.com/checkout/assets/img/empty-bag.png" className="mx-auto h-40 w-36" alt="image" fetchpriority="auto" loading="eager" />
   <div className="message text-center mt-5">
     <h1 className="text-lg text-gray-700 mt-5">Hey, it feels so light!</h1>

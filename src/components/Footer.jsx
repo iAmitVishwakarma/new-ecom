@@ -9,12 +9,12 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 text-gray-700 border-t border-gray-200 mt-16">
-      <div className="container mx-auto px-6 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+     <footer className="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 py-8 px-4">
+      <div className="container mx-auto">
+        <div className="flex flex-wrap justify-between">
           {/* About Section */}
           <div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">New E-com</h3>
+            <h3 className="font-bold text-lg mb-2  ">New E-com</h3>
             <p className="text-[#EB008B]/70 border-dashed font-medium border-b-2 border-gray-500/50   shadow  rounded p-2 mb-4">
               Your one-stop shop for the latest in fashion, electronics, and
               jewelry. Quality products at unbeatable prices.
@@ -23,7 +23,7 @@ const Footer = () => {
 
           {/* Categories Section */}
           <div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Shop</h3>
+            <h3 className="font-bold text-lg mb-2 ">Shop</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/" className="text-gray-600 hover:text-pink-500">
@@ -50,7 +50,7 @@ const Footer = () => {
 
           {/* Information Section */}
           <div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Information</h3>
+            <h3 className="font-bold text-lg mb-2 ">Information</h3>
             <ul className="space-y-2">
               <li>
                 <Link 
@@ -79,7 +79,7 @@ const Footer = () => {
 
           {/* Social Media Section */}
           <div>
-            <h3 className="font-bold text-lg mb-2 text-gray-800">Follow Us</h3>
+            <h3 className="font-bold text-lg mb-2 ">Follow Us</h3>
             <div className="flex space-x-4">
               <a 
             //  href="#"

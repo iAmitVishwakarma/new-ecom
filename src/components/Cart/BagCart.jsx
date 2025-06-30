@@ -17,7 +17,7 @@ if (addToCart.length === 0) {
 
 if (items.length > 0 ) {
   return (
-    <div className="flex w-3/4 mx-auto mt-8 mb-1 bg-white p-4 rounded shadow-md">
+    <div className="flex w-3/4 mx-auto mt-8 mb-20 dark:bg-gray-800 bg-white p-5  rounded shadow-md">
    <div className="w-2/3 pr-4 border-r border-gray-300">
      <BagPage items={items}  ></BagPage>
      </div>

@@ -30,7 +30,7 @@ dispatch(addAddress(newAddress));
 
   return (
   
-    <div className="container w-full mx-auto p-4 SelectDeliveryAddress">
+    <div className="container w-full mx-auto p-5 SelectDeliveryAddress ">
 <div className='flex items-center justify-between' >
       <h1 className="text-2xl font-bold mb-4">
         {/* {addressList ? "Select Delivery Address" : "Add Delivery Address"} */}
@@ -49,7 +49,7 @@ dispatch(addAddress(newAddress));
 if(index === 0) {
   return (
     <>
-  <h1 className=' uppercase text-[#80838e] text-xs font-bold mb-2'> Default Address</h1>
+  <h1 className=' uppercase text-[#80838e] text-xs font-bold mb-2 '> Default Address</h1>
 
     <AddressListCart 
       key={index} 

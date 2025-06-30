@@ -3,7 +3,7 @@ import React from 'react'
 const AddressListCart = ({element , index , checkedAddress ,  setCheckedAddress , handleRemoveAddress}) => {
 
   return (
-    <div key={index} className="address-card bg-white shadow flex items-start gap-2 rounded px-4 py-5 mb-5">
+    <div key={index} className="address-card bg-white dark:bg-gray-900 shadow flex items-start gap-2 rounded-xl px-4 py-5 mb-5">
     <input
       type="radio"
       name="SelectDeliveryAddresses"
@@ -18,7 +18,7 @@ const AddressListCart = ({element , index , checkedAddress ,  setCheckedAddress 
           {element.addressType}
         </span>
       </div>
-      <div className="details text-gray-600 text-[13px]">
+      <div className="details  text-[13px]">
         <p>
           {element.addressLine1}, {element.addressLine2}
         </p>
