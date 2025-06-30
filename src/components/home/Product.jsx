@@ -23,7 +23,8 @@ const Product = ({ product }) => {
         <br />
         <hr />
         <h2 className="product-title text-1xl font-semibold">
-          {product.title.split(" ").slice(0, 6).join(" ")}
+          {product.title.split(" ").length <= 7 ?( product.title.split(" ").slice(0, 7).join(" ") ) : (product.title.split(" ").slice(0, 7).join(" ") + " ..." )
+          }
         </h2>
         <p className="product-price text-sm text-red-600 mb-2 flex flex-col">
           <b className="text-green-600">Discount Price: ${product.price}</b>
