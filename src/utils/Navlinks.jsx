@@ -49,7 +49,7 @@ const location = useLocation()
             </Link>
           </div>
           {isAuthenticated ? (
-            <> { !location.pathname.includes('/cart')  &&
+            <> { location.pathname.includes('/cart') 
               <div className="search-bar flex items-center bg-gray-100 rounded-md px-4 py-2 w-1/3">
                 <FontAwesomeIcon icon={faSearch} className="text-gray-500" />
                 <input
@@ -104,6 +104,7 @@ const location = useLocation()
             </Link>
           )}
         </div>
+        
       </header>
       <main className="flex-grow">
         <Suspense
