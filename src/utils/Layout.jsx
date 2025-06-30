@@ -253,10 +253,10 @@ const Layout = () => {
             </>
           ) : (
             <Link
-              to="/login"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              to={localStorage.getItem("isAuthenticated") ? "/login" : "/signup"}
+              className="block px-4 py-2 text-md bg-pink-500 hover:text-pink-900 text-gray-100  font-semibold rounded-lg transition-colors duration-100 ease-in-out hover:bg-amber-500/50 capitalize"
             >
-              Login
+              {localStorage.getItem("isAuthenticated") ? "login" : "signup"}
             </Link>
           )}
         </div>

@@ -7,13 +7,14 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+const [  number,setNumber] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSignup = (e) => {
     e.preventDefault();
     // In a real app, you'd save the user to a database
-    dispatch(signup({ name, email }));
+    dispatch(signup({ name, email , number , password }));
     navigate('/');
   };
 
@@ -28,6 +29,17 @@ const Signup = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              className="w-full px-3 py-2 border rounded"
+              required
+            />
+          </div>
+           <div className="mb-4">
+            <label className="block text-gray-700">Number </label>
+            <input
+              type="text"
+              value={number}
+              maxLength={10}
+              onChange={(e) => setNumber(e.target.value)}
               className="w-full px-3 py-2 border rounded"
               required
             />
@@ -47,10 +59,12 @@ const Signup = () => {
             <input
               type="password"
               value={password}
+              
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 border rounded"
               required
             />
+
           </div>
           <button
             type="submit"

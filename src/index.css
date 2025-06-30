@@ -8,3 +8,9 @@
 .product-card:hover  .utilyBtn {
   display: flex;
 }
+
+.scroll-none{
+  body{
+    overflow: hidden;
+  }
+}
