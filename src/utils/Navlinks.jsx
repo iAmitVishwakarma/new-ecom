@@ -43,6 +43,7 @@ const location = useLocation()
       <header className="header flex justify-between items-center px-10 py-4 shadow-lg sticky top-0 bg-white z-50">
         <div className="w-10/12 mx-auto flex justify-between items-center">
           {" "}
+          <h1>hello</h1>
           <div className="logo">
             <Link to="/">
               <img className="h-12" src={Logo} alt="logo" />
