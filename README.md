@@ -1,10 +1,12 @@
 
 # 🛒 E-Commerce Web Application (firstpro)
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge&logo=vercel)](https://new-ecom-flax.vercel.app/)
+
 This is a modern, responsive e-commerce web application built with **React** and **Vite**. It features a clean user interface, robust state management with **Redux Toolkit**, and styling with **Tailwind CSS**. The application provides a complete shopping experience—from browsing products to a seamless multi-step checkout.
 -
 
-[![Live Demo]](https://your-live-site-url.com)
+
 ---
 
 ## ✨ Features
