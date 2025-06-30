@@ -17,9 +17,8 @@ export const authSlice = createSlice({
     },
     logout: (state) => {
       state.isAuthenticated = false;
-      state.user = null;
       localStorage.removeItem('isAuthenticated');
-      localStorage.removeItem('user');
+    
     },
     signup: (state, action) => {
       // For now, signup will also log the user in
